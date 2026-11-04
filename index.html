@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La hoja de los 277 millones — Juanfe León</title>
+<meta name="description" content="De la venta bruta de Shopify a lo que de verdad te queda. La hoja con la que le mostramos a una marca que de 277 millones le quedaban 4.">
+<meta property="og:title" content="La hoja de los 277 millones">
+<meta property="og:description" content="De la venta bruta de Shopify a lo que de verdad te queda.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --paper:#f6f6f4; --raised:#ffffff; --ink:#0e0e10; --muted:#5b5b63;
+  --line:#d9d9de; --accent:#1f3dff; --on-accent:#fff;
+  --marker:#ffe033; --on-marker:#0e0e10; --signal:#d12e14; --band:#ecebe7;
+  --display:"Archivo","Arial Black",system-ui,sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#0e0e10; --raised:#1a1a1e; --ink:#f6f6f4; --muted:#a2a2aa;
+  --line:#2e2e34; --accent:#7a8cff; --on-accent:#0e0e10;
+  --signal:#ff6a4d; --band:#17171b; color-scheme:dark;
+}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+h1{font-size:clamp(32px,7vw,58px);font-weight:900;letter-spacing:-.045em;line-height:.95}
+h2{font-size:clamp(20px,3vw,27px);font-weight:900;letter-spacing:-.03em;line-height:1.05}
+h3{font-size:14px;font-weight:800;letter-spacing:-.01em}
+p{margin:0}
+.kicker{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.stack{display:flex;flex-direction:column}
+.g1{gap:8px}.g2{gap:16px}.g3{gap:26px}.g4{gap:44px}
+.muted{color:var(--muted)}
+header{background:var(--band);padding-block:clamp(36px,6vw,64px)}
+section{padding-block:clamp(32px,5vw,56px)}
+.lede{font-size:clamp(16px,2vw,19px);line-height:1.45;max-width:58ch}
+/* form */
+.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:16px}
+fieldset{border:1px solid var(--line);background:var(--raised);padding:16px;margin:0;min-width:0}
+legend{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);padding:0 6px;margin-left:-6px}
+.f{display:grid;grid-template-columns:1fr 124px;gap:8px 12px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)}
+fieldset .f:last-of-type{border-bottom:0;padding-bottom:0}
+.f label{font-size:13.5px;line-height:1.3;min-width:0}
+.f .hint{display:block;font-size:11.5px;color:var(--muted);line-height:1.3;margin-top:2px}
+input[type=number],select{width:100%;font-family:var(--mono);font-size:13px;padding:7px 8px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:0;text-align:right;font-variant-numeric:tabular-nums}
+select{text-align:left;font-family:var(--body);font-size:12.5px}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.f.wide{grid-template-columns:1fr}
+.f.wide select{text-align:left}
+/* cascada */
+.out{display:grid;grid-template-columns:1.25fr 1fr;gap:26px;align-items:start}
+@media (max-width:760px){.out{grid-template-columns:1fr}}
+.casc{border:1px solid var(--line);background:var(--raised)}
+.row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);align-items:baseline}
+.row:last-child{border-bottom:0}
+.row .n{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.row .t{font-size:13.5px;min-width:0}
+.row .t small{display:block;font-size:11.5px;color:var(--muted)}
+.row.neg .n{color:var(--signal)}
+.row.sub{background:var(--band)}
+.row.sub .t{font-weight:600}
+.row.sub .n{font-weight:600}
+.row.total{background:var(--ink);color:var(--paper)}
+.row.total .t{font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:-.01em}
+.row.total .n{font-family:var(--display);font-weight:900;font-size:21px;letter-spacing:-.03em}
+.row.total.bad .n{color:#ff8a70}
+.row.total.good .n{color:#9fe8a0}
+/* kpis */
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.kpi{background:var(--raised);padding:14px;min-width:0}
+.kpi .v{font-family:var(--display);font-size:25px;font-weight:900;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;display:block}
+.kpi .l{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.3;display:block;margin-top:6px}
+/* switches */
+.sw{border:1px solid var(--line);background:var(--raised);padding:14px;display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:start}
+.sw+.sw{border-top:0}
+.sw h3{grid-column:1}
+.sw .d{grid-column:1;font-size:12.5px;color:var(--muted);line-height:1.4}
+.sw .imp{grid-column:1;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--signal);font-variant-numeric:tabular-nums}
+.sw input[type=checkbox]{grid-row:1/3;grid-column:2;width:22px;height:22px;accent-color:var(--accent);margin:0}
+.note{border-left:3px solid var(--accent);padding-left:15px}
+.note p{font-size:14px;line-height:1.5}
+.note.warn{border-left-color:var(--signal)}
+.btn{font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;background:none;border:1px solid var(--line);color:var(--muted);padding:8px 13px;cursor:pointer}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+footer{border-top:1px solid var(--line);padding-block:26px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);line-height:1.8}
+mark{background:var(--marker);color:var(--on-marker);padding:0 .14em}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap stack g2">
+    <p class="kicker">Recurso · @juanfleonleon</p>
+    <h1>La hoja de los<br>277 millones</h1>
+    <p class="lede">Una marca facturó 277 millones en mes y medio. Después de todo, le quedaron cuatro y medio. Esta es la misma hoja con la que se lo mostramos, abierta con sus números. Cambiá los tuyos.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap stack g3">
+    <div class="stack g1">
+      <p class="kicker">01 — Tus números</p>
+      <h2>Lo que pasó en el período</h2>
+    </div>
+
+    <div class="groups">
+      <fieldset>
+        <legend>La venta</legend>
+        <div class="f"><label for="ventaBruta">Venta bruta del período<small class="hint">La que muestra Shopify</small></label><input type="number" id="ventaBruta" value="277000000" min="0" step="100000"></div>
+        <div class="f"><label for="dias">Días del período</label><input type="number" id="dias" value="45" min="1" step="1"></div>
+        <div class="f"><label for="pedidos">Pedidos del período</label><input type="number" id="pedidos" value="1730" min="1" step="1"></div>
+        <div class="f"><label for="ivaTasa">IVA (%)<small class="hint">Solo aplica si activás el interruptor de abajo</small></label><input type="number" id="ivaTasa" value="19" min="0" max="50" step="0.5"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Lo que no llega</legend>
+        <div class="f"><label for="pctNo">Pedidos no entregados (%)<small class="hint">Contraentrega rechazada, dirección mala, nadie contesta</small></label><input type="number" id="pctNo" value="25" min="0" max="100" step="0.5"></div>
+        <div class="f"><label for="pctDev">Devoluciones (%)<small class="hint">Sobre los que sí se entregaron</small></label><input type="number" id="pctDev" value="10" min="0" max="100" step="0.5"></div>
+        <div class="f wide"><label for="fleteModo">¿Sobre cuáles pagás el flete?</label><select id="fleteModo">
+          <option value="entregados">Solo sobre los que se entregan</option>
+          <option value="todos">Sobre todos los despachados</option>
+          <option value="retorno">Sobre todos + el retorno de los que rebotan</option>
+        </select></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Costo por pedido</legend>
+        <div class="f"><label for="costoMerc">Mercancía</label><input type="number" id="costoMerc" value="65000" min="0" step="1000"></div>
+        <div class="f"><label for="flete">Flete que asumís vos<small class="hint">Lo que pagás menos lo que le cobrás al cliente</small></label><input type="number" id="flete" value="5000" min="0" step="500"></div>
+        <div class="f"><label for="empaque">Empaque, picking e insumos</label><input type="number" id="empaque" value="0" min="0" step="500"></div>
+        <div class="f"><label for="pasFijo">Fijo de pasarela por transacción</label><input type="number" id="pasFijo" value="0" min="0" step="100"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Costos del período</legend>
+        <div class="f"><label for="pauta">Inversión en pauta</label><input type="number" id="pauta" value="50000000" min="0" step="100000"></div>
+        <div class="f"><label for="nomina">Nómina mensual<small class="hint">Con prestaciones, no el básico</small></label><input type="number" id="nomina" value="22450000" min="0" step="100000"></div>
+        <div class="f"><label for="otros">Otros fijos al mes<small class="hint">Contabilidad, software, arriendo</small></label><input type="number" id="otros" value="11379000" min="0" step="100000"></div>
+        <div class="f"><label for="pasPct">Pasarela y plataforma (%)</label><input type="number" id="pasPct" value="0" min="0" max="20" step="0.05"></div>
+        <div class="f"><label for="agencia">Comisión de agencia (%)</label><input type="number" id="agencia" value="0" min="0" max="50" step="0.5"></div>
+      </fieldset>
+    </div>
+
+    <button class="btn" id="reset" type="button">Volver a los números del caso</button>
+  </div>
+</section>
+
+<section style="background:var(--band)">
+  <div class="wrap stack g3">
+    <div class="stack g1">
+      <p class="kicker">02 — La cascada</p>
+      <h2>De la venta bruta a lo que queda</h2>
+    </div>
+
+    <div class="out">
+      <div class="casc" id="casc"></div>
+
+      <div class="stack g2">
+        <div class="kpis">
+          <div class="kpi"><span class="v" id="kMargen">—</span><span class="l">Margen real sobre<br>la venta bruta</span></div>
+          <div class="kpi"><span class="v" id="kPedido">—</span><span class="l">Utilidad por<br>pedido despachado</span></div>
+          <div class="kpi"><span class="v" id="kRoas">—</span><span class="l">ROAS real<br>sobre venta cobrada</span></div>
+          <div class="kpi"><span class="v" id="kBER">—</span><span class="l">ROAS que necesitás<br>para no perder</span></div>
+        </div>
+        <div class="note">
+          <p id="veredicto">—</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap stack g3">
+    <div class="stack g1">
+      <p class="kicker">03 — Los dos interruptores</p>
+      <h2>Acá es donde casi siempre cambia todo</h2>
+      <p class="lede muted">La hoja abre con los números exactamente como los calculaba esa marca. Estos dos interruptores son los que nadie prende, y cada uno te dice al lado cuánto cuesta prenderlo.</p>
+    </div>
+
+    <div>
+      <div class="sw">
+        <h3>Tus precios incluyen IVA</h3>
+        <p class="d">Si sos responsable de IVA, ese 19% nunca fue tuyo: lo recaudás y lo giras. Calcular el margen sobre el precio con IVA es la forma más común de creer que un negocio deja plata.</p>
+        <p class="imp" id="impIva">—</p>
+        <input type="checkbox" id="ivaInc" aria-label="Mis precios incluyen IVA">
+      </div>
+      <div class="sw">
+        <h3>Pagás el flete de los pedidos que rebotan</h3>
+        <p class="d">Un pedido que sale y no se entrega ya te costó el despacho, y casi siempre también el retorno. La marca del caso lo estaba cobrando solo sobre los entregados.</p>
+        <p class="imp" id="impFlete">—</p>
+        <input type="checkbox" id="fleteRebote" aria-label="Pago el flete de los pedidos que rebotan">
+      </div>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Lo que hay que mirar de frente:</strong> con los dos interruptores prendidos, el caso que abre esta hoja deja de dar 4 millones de utilidad. Ese es el ejercicio completo, y es el que vale la pena hacer antes de subirle a la pauta.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Juanfe León · @juanfleonleon</p>
+    <p>Caso real, cifras redondeadas, marca anónima · noviembre 2026</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ids=['ventaBruta','dias','pedidos','ivaTasa','pctNo','pctDev','costoMerc','flete','empaque','pasFijo','pauta','nomina','otros','pasPct','agencia'];
+  var DEF={ventaBruta:277000000,dias:45,pedidos:1730,ivaTasa:19,pctNo:25,pctDev:10,costoMerc:65000,flete:5000,empaque:0,pasFijo:0,pauta:50000000,nomina:22450000,otros:11379000,pasPct:0,agencia:0};
+  var fmt=new Intl.NumberFormat('es-CO',{maximumFractionDigits:0});
+  var KEY='unit-economics-v1';
+
+  function val(id){var el=document.getElementById(id);var n=parseFloat(el.value);return isFinite(n)?n:0;}
+
+  function calc(o){
+    var pedidos=Math.max(o.pedidos,0);
+    var entregados=pedidos*(1-o.pctNo/100);
+    var finales=entregados*(1-o.pctDev/100);
+    var tasa=pedidos>0?finales/pedidos:0;
+    var brutaCobrada=o.ventaBruta*tasa;
+    var iva=o.ivaInc?brutaCobrada-brutaCobrada/(1+o.ivaTasa/100):0;
+    var neta=brutaCobrada-iva;
+
+    var fleteUnidades;
+    if(o.fleteModo==='retorno'){fleteUnidades=pedidos+(pedidos-entregados);}
+    else if(o.fleteModo==='todos'){fleteUnidades=pedidos;}
+    else {fleteUnidades=finales;}
+
+    var cMerc=finales*o.costoMerc;
+    var cFlete=fleteUnidades*o.flete;
+    var cEmp=pedidos*o.empaque;
+    var cPas=brutaCobrada*(o.pasPct/100)+finales*o.pasFijo;
+    var cAg=neta*(o.agencia/100);
+    var cFijos=(o.nomina+o.otros)*(o.dias/30);
+    var cPauta=o.pauta;
+
+    var contribucion=neta-cMerc-cFlete-cEmp-cPas-cAg;
+    var utilidad=contribucion-cPauta-cFijos;
+    return {pedidos:pedidos,entregados:entregados,finales:finales,perdidos:pedidos-finales,
+      brutaCobrada:brutaCobrada,perdidaVenta:o.ventaBruta-brutaCobrada,iva:iva,neta:neta,
+      cMerc:cMerc,cFlete:cFlete,cEmp:cEmp,cPas:cPas,cAg:cAg,cFijos:cFijos,cPauta:cPauta,
+      contribucion:contribucion,utilidad:utilidad};
+  }
+
+  function read(){
+    var o={};
+    ids.forEach(function(id){o[id]=val(id);});
+    o.ivaInc=document.getElementById('ivaInc').checked;
+    o.fleteModo=document.getElementById('fleteRebote').checked?'retorno':document.getElementById('fleteModo').value;
+    return o;
+  }
+
+  function money(n){return (n<0?'−':'')+'$'+fmt.format(Math.abs(Math.round(n)));}
+
+  function render(){
+    var o=read();
+    var r=calc(o);
+
+    var rows=[];
+    rows.push(['Venta bruta del período','', o.ventaBruta, 'sub']);
+    if(r.perdidaVenta>0.5) rows.push([
+      'Pedidos que no se entregan o se devuelven',
+      fmt.format(Math.round(r.perdidos))+' de '+fmt.format(Math.round(r.pedidos))+' pedidos',
+      -r.perdidaVenta,'neg']);
+    rows.push(['Venta que de verdad cobrás','', r.brutaCobrada,'sub']);
+    if(r.iva>0.5) rows.push(['IVA que recaudás y giras','Nunca fue tuyo', -r.iva,'neg']);
+    if(r.cMerc>0.5) rows.push(['Mercancía', fmt.format(Math.round(r.finales))+' pedidos × '+money(o.costoMerc), -r.cMerc,'neg']);
+    if(r.cFlete>0.5) rows.push(['Flete que asumís', o.fleteModo==='retorno'?'Incluye el retorno de los que rebotan':(o.fleteModo==='todos'?'Sobre todos los despachados':'Solo sobre los entregados'), -r.cFlete,'neg']);
+    if(r.cEmp>0.5) rows.push(['Empaque, picking e insumos','', -r.cEmp,'neg']);
+    if(r.cPas>0.5) rows.push(['Pasarela y plataforma','', -r.cPas,'neg']);
+    if(r.cAg>0.5) rows.push(['Comisión de agencia','', -r.cAg,'neg']);
+    rows.push(['Contribución antes de pauta y fijos','', r.contribucion,'sub']);
+    if(r.cPauta>0.5) rows.push(['Inversión en pauta','', -r.cPauta,'neg']);
+    if(r.cFijos>0.5) rows.push(['Nómina y fijos', o.dias+' días de '+money(o.nomina+o.otros)+' al mes', -r.cFijos,'neg']);
+
+    var html='';
+    rows.forEach(function(x){
+      html+='<div class="row '+(x[3]||'')+'"><div class="t">'+x[0]+(x[1]?'<small>'+x[1]+'</small>':'')+'</div><div class="n">'+money(x[2])+'</div></div>';
+    });
+    var margen=o.ventaBruta>0?(r.utilidad/o.ventaBruta*100):0;
+    var tono=r.utilidad<0?'bad':(margen>=5?'good':'');
+    html+='<div class="row total '+tono+'"><div class="t">Lo que de verdad te queda</div><div class="n">'+money(r.utilidad)+'</div></div>';
+    document.getElementById('casc').innerHTML=html;
+
+    document.getElementById('kMargen').textContent=(margen>=0?'':'−')+Math.abs(margen).toFixed(1)+'%';
+    document.getElementById('kPedido').textContent=r.pedidos>0?money(r.utilidad/r.pedidos):'—';
+    document.getElementById('kRoas').textContent=o.pauta>0?(r.brutaCobrada/o.pauta).toFixed(2):'—';
+
+    var margenUnit=r.brutaCobrada>0?r.contribucion/r.brutaCobrada:0;
+    var ber=(margenUnit>0&&o.pauta>0)?((o.pauta+r.cFijos)/(o.pauta*margenUnit)):0;
+    document.getElementById('kBER').textContent=ber>0?ber.toFixed(2):'—';
+
+    var v=document.getElementById('veredicto');
+    if(r.utilidad<0){
+      v.innerHTML='<strong>Este período dio pérdida de '+money(Math.abs(r.utilidad))+'.</strong> Cada pedido que despachaste te costó '+money(Math.abs(r.utilidad)/Math.max(r.pedidos,1))+' de tu bolsillo. Antes de subirle a la pauta hay que mover el ticket, el costo por pedido o el porcentaje que no se entrega.';
+    } else if(margen<5){
+      v.innerHTML='<strong>Te queda '+money(r.utilidad)+', un '+margen.toFixed(1)+'% de lo que facturaste.</strong> Es un margen que cualquier mes malo se lleva por delante. La palanca más barata casi nunca es más pauta: es el porcentaje que no se entrega.';
+    } else {
+      v.innerHTML='<strong>Te queda '+money(r.utilidad)+', un '+margen.toFixed(1)+'% de lo que facturaste.</strong> Con ese margen hay espacio para empujar, siempre que el inventario y la caja aguanten el volumen.';
+    }
+
+    // impacto de cada interruptor
+    var base=r.utilidad;
+    var oIva=read(); oIva.ivaInc=!oIva.ivaInc;
+    var dIva=calc(oIva).utilidad-base;
+    document.getElementById('impIva').textContent=(document.getElementById('ivaInc').checked?'Apagarlo suma ':'Prenderlo cuesta ')+money(Math.abs(dIva));
+
+    var oF=read(); oF.fleteModo=document.getElementById('fleteRebote').checked?document.getElementById('fleteModo').value:'retorno';
+    var dF=calc(oF).utilidad-base;
+    document.getElementById('impFlete').textContent=(document.getElementById('fleteRebote').checked?'Apagarlo suma ':'Prenderlo cuesta ')+money(Math.abs(dF));
+
+    try{localStorage.setItem(KEY,JSON.stringify(read()));}catch(e){}
+  }
+
+  ids.forEach(function(id){document.getElementById(id).addEventListener('input',render);});
+  document.getElementById('fleteModo').addEventListener('change',render);
+  document.getElementById('ivaInc').addEventListener('change',render);
+  document.getElementById('fleteRebote').addEventListener('change',render);
+  document.getElementById('reset').addEventListener('click',function(){
+    ids.forEach(function(id){document.getElementById(id).value=DEF[id];});
+    document.getElementById('ivaInc').checked=false;
+    document.getElementById('fleteRebote').checked=false;
+    document.getElementById('fleteModo').value='entregados';
+    try{localStorage.removeItem(KEY);}catch(e){}
+    render();
+  });
+
+  try{
+    var saved=JSON.parse(localStorage.getItem(KEY)||'null');
+    if(saved){
+      ids.forEach(function(id){if(typeof saved[id]==='number')document.getElementById(id).value=saved[id];});
+      if(saved.fleteModo&&saved.fleteModo!=='retorno')document.getElementById('fleteModo').value=saved.fleteModo;
+      document.getElementById('fleteRebote').checked=saved.fleteModo==='retorno';
+      document.getElementById('ivaInc').checked=!!saved.ivaInc;
+    }
+  }catch(e){}
+
+  render();
+})();
+</script>
+</body>
+</html>
